@@ -1,15 +1,14 @@
 from datetime import datetime
+from typing import List, Optional
 
 from pydantic import BaseModel
 
 
 class Currency(BaseModel):
-    currency: str
+    short_name_currency: str
     rate: float
-    date: datetime
-    user: str
-    institution: str
-    user_ip: str
+    exchange_date: datetime
+    user_ip: Optional[str]
 
 
 class NBUCurrency(BaseModel):
@@ -18,3 +17,9 @@ class NBUCurrency(BaseModel):
     rate: float
     short_name_currency: str
     exchange_date: datetime
+
+
+class ResponseInfo(BaseModel):
+    average: float
+    response_nbu: Optional[NBUCurrency]
+    user_info: List[Currency]

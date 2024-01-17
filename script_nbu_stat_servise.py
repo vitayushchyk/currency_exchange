@@ -1,7 +1,9 @@
+from datetime import datetime
+
 import requests
 
 URL_DATA = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
-URL_TO_SEND_DATA = 'http://127.0.0.1:8000/nbu'
+URL_TO_SEND_DATA = 'http://127.0.0.1:8000/nbu/'
 
 
 def fetch_and_send_currency_data():
@@ -17,7 +19,7 @@ def fetch_and_send_currency_data():
                 "full_name_currency": data["txt"],
                 "rate": data["rate"],
                 "short_name_currency": data["cc"],
-                "exchange_date": data["exchange date"],
+                "exchange_date": datetime.strptime(data["exchangedate"], "%d.%m.%Y").timestamp(),
             }
 
             response = requests.post(URL_TO_SEND_DATA, json=currency_data)
