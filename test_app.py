@@ -1,6 +1,4 @@
-from datetime import date
 from unittest.mock import patch, MagicMock
-from models import ResponseInfo
 
 
 def test_check_endpoint(client):
