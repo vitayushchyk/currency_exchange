@@ -22,7 +22,10 @@ if __name__ == '__main__':
 
 @app.post("/currency/")
 async def receive_currency(data: Currency, request: Request) -> Currency:
-    data.user_ip = request.client.host
+    if request.client:
+        data.user_ip = request.client.host
+    else:
+        data.user_ip = None
     storage.add_currency(data)
 
     return data

@@ -36,3 +36,5 @@
   call  `POST /currency/`
 * [ ] extend `GET /currency/{date}?currency_name={currency_name}` to get information for given day
 * [ ] extend `GET /currency/{date}?currency_name={currency_name}` to get with best course
+* [ ] Copy conftest.py from teacher to me 
+* [ ] Add test for each endpoint from app.py 
